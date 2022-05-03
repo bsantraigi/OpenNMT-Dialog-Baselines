@@ -53,6 +53,6 @@ onmt_train -config configs/dstc7_transformer_wordvocab_model.yaml
 #### 5. Translate
 
 ```sh
-onmt_translate -model toy-ende/run/model_step_1000.pt -src toy-ende/src-test.txt -output toy-ende/pred_1000.txt -gpu 0 -verbose
-onmt_translate -model toy-ende/run/model_step_1000.pt -src toy-ende/src-test.txt -output toy-ende/pred_1000.txt -gpu 0 -verbose
+onmt_translate -model data/ijcnlp_dailydialog/run/BEST_MODEL_PATH.pt -src data/ijcnlp_dailydialog/test.src.txt -output data/ijcnlp_dailydialog/run/transformer_wordvocab_best.txt -gpu 0 -verbose
+onmt_translate -model data/dstc7-ubuntu/run/BEST_MODEL_PATH.pt -src data/dstc7-ubuntu/test.src.txt -output data/dstc7-ubuntu/run/transformer_wordvocab_best.txt -gpu 0 -verbose
 ```

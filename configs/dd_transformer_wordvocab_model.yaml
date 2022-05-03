@@ -26,7 +26,9 @@ tgt_vocab: data/ijcnlp_dailydialog/run/vocab.tgt
 
 save_model: data/ijcnlp_dailydialog/run/transformer_wordvocab
 save_checkpoint_steps: 10000
-keep_checkpoint: 10
+keep_checkpoint: 15
+early_stopping: 14
+early_stopping_criteria: ppl
 seed: 3435
 train_steps: 500000
 valid_steps: 10000
