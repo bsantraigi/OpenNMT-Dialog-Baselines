@@ -57,7 +57,10 @@ def write(dialogs, split):
 
     for dial in tqdm(dialogs, desc="Creating CR pairs"):
         _, con, resp, _ = dial
-        ctx, src = con[-2:]
+        # ctx, src = con[-2:]
+        # Use all prev. utt. for context
+        ctx = " ".join(con[:-1])
+        src = con[-1]
         trg = resp.strip()
 
         ctx = ctx.strip()

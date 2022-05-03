@@ -19,7 +19,8 @@ for split in ['train', 'validation', 'test']:
 
         for dial in tqdm(dialogs):
             for i in range(2, len(dial)):
-                ctx = dial[i-2].strip()
+                # Take everything upto i-2 (including)
+                ctx = (" ".join(dial[:i-1])).strip()
                 src = dial[i-1].strip()
                 trg = dial[i].strip()
                 if trg!="":
