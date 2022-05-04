@@ -62,12 +62,12 @@ onmt_translate -model data/dstc7-ubuntu/run/BEST_MODEL_PATH.pt -src data/dstc7-u
 Create the final json files using the following commands:
 
 ```sh
-python reformat_to_r3_json.py \
+python reformat_to_json.py \
     -src data/ijcnlp_dailydialog/test.src.txt \
     -tgt data/ijcnlp_dailydialog/test.tgt.txt \
     -pred data/ijcnlp_dailydialog/run/transformer_wordvocab_best.txt
 
-python reformat_to_r3_json.py \
+python reformat_to_json.py \
     -src data/dstc7-ubuntu/test.src.txt \
     -tgt data/dstc7-ubuntu/test.tgt.txt \
     -pred data/dstc7-ubuntu/run/transformer_wordvocab_best.txt
