@@ -25,15 +25,15 @@ src_vocab: data/dstc7-ubuntu/run/vocab.src
 tgt_vocab: data/dstc7-ubuntu/run/vocab.tgt
 
 save_model: data/dstc7-ubuntu/run/transformer_wordvocab
-save_checkpoint_steps: 10000
+save_checkpoint_steps: 30
 keep_checkpoint: 15
 early_stopping: 14
 early_stopping_criteria: ppl
 seed: 3435
-train_steps: 500000
-valid_steps: 10000
-warmup_steps: 8000
-report_every: 100
+train_steps: 3000
+valid_steps: 30
+warmup_steps: 30
+report_every: 10
 
 decoder_type: transformer
 encoder_type: transformer
@@ -51,7 +51,7 @@ decay_method: noam
 learning_rate: 2.0
 max_grad_norm: 0.0
 
-batch_size: 8192
+batch_size: 2048
 batch_type: tokens
 normalization: tokens
 dropout: 0.1
@@ -63,6 +63,9 @@ param_init: 0.0
 param_init_glorot: 'true'
 position_encoding: 'true'
 
-world_size: 1
+world_size: 4
 gpu_ranks:
 - 0
+- 1
+- 2
+- 3
