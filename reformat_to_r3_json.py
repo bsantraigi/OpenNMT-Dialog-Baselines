@@ -13,7 +13,7 @@ from transformers import AutoTokenizer
 def cmdline_args():
     p = argparse.ArgumentParser()
     p.add_argument('-src', '--source', required=True, help="""Source sequence to decode (one line per sequence)""")
-    p.add_argument('-ctx', '--context', required=True, help="""Source sequence to decode (one line per sequence)""")
+    # p.add_argument('-ctx', '--context', required=True, help="""Source sequence to decode (one line per sequence)""")
     p.add_argument('-tgt', '--target', required=True, help='True target sequence (optional)')
     p.add_argument('-pred', '--prediction', required=True, help="""Path to output the predictions (each line will be the decoded sequence""")
     
@@ -32,25 +32,25 @@ def read_array_file(fname):
             a.append(line)
     return a
 
-ctx = read_array_file(args.context)
+# ctx = read_array_file(args.context)
 src = read_array_file(args.source)
 tgt = read_array_file(args.target)
 pred = read_array_file(args.prediction)
 
-assert len(ctx) == len(src)
-assert len(ctx) == len(tgt)
-assert len(ctx) == len(pred)
+# assert len(ctx) == len(src)
+assert len(src) == len(tgt)
+assert len(src) == len(pred)
 
-vocab_model_reference = 'facebook/blenderbot-3B'
-tokenizer = AutoTokenizer.from_pretrained(vocab_model_reference, use_fast=True, verbose=False)
-SEP = tokenizer.sep_token
+# vocab_model_reference = 'facebook/blenderbot-3B'
+# tokenizer = AutoTokenizer.from_pretrained(vocab_model_reference, use_fast=True, verbose=False)
+# SEP = tokenizer.sep_token
 
 collector_json = []
-for c,s,t,p in zip(ctx, src, tgt, pred):
+for s,t,p in zip(src, tgt, pred):
     collector_json.append({
-        'con': SEP.join([c, s]),
+        'con': s,
         'gt': t,
-        'mirror': p
+        'ce-opennmt': p
     })
     
 with open(args.prediction + '.json', 'w') as f:

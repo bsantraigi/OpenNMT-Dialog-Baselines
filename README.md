@@ -56,3 +56,19 @@ onmt_train -config configs/dstc7_transformer_wordvocab_model.yaml
 onmt_translate -model data/ijcnlp_dailydialog/run/BEST_MODEL_PATH.pt -src data/ijcnlp_dailydialog/test.src.txt -output data/ijcnlp_dailydialog/run/transformer_wordvocab_best.txt -gpu 0 -verbose
 onmt_translate -model data/dstc7-ubuntu/run/BEST_MODEL_PATH.pt -src data/dstc7-ubuntu/test.src.txt -output data/dstc7-ubuntu/run/transformer_wordvocab_best.txt -gpu 0 -verbose
 ```
+
+#### 6. Reformat
+
+Create the final json files using the following commands:
+
+```sh
+python reformat_to_r3_json.py \
+    -src data/ijcnlp_dailydialog/test.src.txt \
+    -tgt data/ijcnlp_dailydialog/test.tgt.txt \
+    -pred data/ijcnlp_dailydialog/run/transformer_wordvocab_best.txt
+
+python reformat_to_r3_json.py \
+    -src data/dstc7-ubuntu/test.src.txt \
+    -tgt data/dstc7-ubuntu/test.tgt.txt \
+    -pred data/dstc7-ubuntu/run/transformer_wordvocab_best.txt
+```
