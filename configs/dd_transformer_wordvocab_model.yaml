@@ -30,7 +30,7 @@ keep_checkpoint: 15
 early_stopping: 14
 early_stopping_criteria: ppl
 seed: 3435
-train_steps: 5000
+train_steps: 3500
 valid_steps: 30
 warmup_steps: 30
 report_every: 10
